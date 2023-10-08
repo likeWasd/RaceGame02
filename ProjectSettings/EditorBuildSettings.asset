@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/NormalScene.unity
+    guid: 6e3feabfe1c9e9e42aa49152792c78c7
+  - enabled: 1
+    path: Assets/Scenes/CarSelect.unity
+    guid: 91aa0db3b7d01f340b491510196350d1
+  - enabled: 1
+    path: Assets/Scenes/F1Scene.unity
+    guid: c2d7df8fa8eb3464e9718fcc39f29616
+  m_configObjects: {}
