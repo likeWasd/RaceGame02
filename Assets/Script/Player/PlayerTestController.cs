@@ -13,6 +13,7 @@ public class PlayerTestController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cc = GetComponent<CharacterController>();
         engineRot = 0f;
         gear = 1;
         speed = 0f;
@@ -26,6 +27,14 @@ public class PlayerTestController : MonoBehaviour
         EngineRot();
         Gear();
         Speed();
+        if (Input.GetKey(KeyCode.A) == true)
+        {
+            transform.Rotate(0f, -0.5f, 0f);
+        }
+        if (Input.GetKey(KeyCode.D) == true)
+        {
+            transform.Rotate(0f, 0.5f, 0f);
+        }
     }
 
     void EngineRot()
