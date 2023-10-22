@@ -16,5 +16,6 @@ public class GearScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Gear_Text.text = PlayerTestController.gear.ToString();
     }
 }

@@ -1,21 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class EngineRotScript : MonoBehaviour
+public class LightSwitch : MonoBehaviour
 {
+    [SerializeField] Renderer[] renderer;
     public PlayerTestController PlayerTestController;
-    public Text EngineRot_Text;
     // Start is called before the first frame update
     void Start()
     {
-        
+        for (int i = 0; i > 14; i++)
+        {
+            renderer[i].enabled = false;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        EngineRot_Text.text = PlayerTestController.engineRot.ToString("F0");
+        
     }
 }
