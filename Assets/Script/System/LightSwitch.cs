@@ -9,15 +9,21 @@ public class LightSwitch : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i > 14; i++)
-        {
-            renderer[i].enabled = false;
-        }
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        for (int i = 0; i < 15; i++)
+        {
+            if (PlayerTestController.engineRot > 530 * (i + 1) + 3000)
+            {
+                renderer[i].enabled = true;
+            } else
+            {
+                renderer[i].enabled = false;
+            }
+        }
     }
 }

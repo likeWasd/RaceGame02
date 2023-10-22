@@ -29,11 +29,11 @@ public class PlayerTestController : MonoBehaviour
         Speed();
         if (Input.GetKey(KeyCode.A) == true)
         {
-            transform.Rotate(0f, -0.5f, 0f);
+            transform.Rotate(0f, -1.5f, 0f);
         }
         if (Input.GetKey(KeyCode.D) == true)
         {
-            transform.Rotate(0f, 0.5f, 0f);
+            transform.Rotate(0f, 1.5f, 0f);
         }
     }
 
