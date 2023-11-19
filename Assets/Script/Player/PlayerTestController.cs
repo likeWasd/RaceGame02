@@ -75,7 +75,7 @@ public class PlayerTestController : MonoBehaviour
                 gear++;
                 StartCoroutine(ChangeGear());
             }
-            if (Input.GetKeyDown(KeyCode.I) == true && gear == 0 && engineRot < 3000)
+            else if (Input.GetKeyDown(KeyCode.I) == true && gear == 0 && engineRot < 3000)
             {
                 gear++;
                 StartCoroutine(ChangeGear());
