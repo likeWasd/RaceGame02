@@ -85,7 +85,7 @@ public class PlayerTestController : MonoBehaviour
                 gear--;
                 StartCoroutine(ChangeGear());
             }
-            if (Input.GetKeyDown(KeyCode.K) == true && gear == 1 && speed < 12000)
+            else if (Input.GetKeyDown(KeyCode.K) == true && gear == 1 && speed < 12000)
             {
                 gear--;
                 StartCoroutine(ChangeGear());
