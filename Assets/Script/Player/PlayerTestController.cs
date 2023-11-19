@@ -46,7 +46,14 @@ public class PlayerTestController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W) == true && isGearChange == false)
         {
-            engineRot += engineRotKeisu * Time.deltaTime;
+            if (gear == 0)
+            {
+                engineRot += engineRotKeisu * Time.deltaTime;
+            }
+            else
+            {
+                engineRot += engineRotKeisu * Time.deltaTime;
+            }
         }
         else
         {
@@ -68,7 +75,17 @@ public class PlayerTestController : MonoBehaviour
                 gear++;
                 StartCoroutine(ChangeGear());
             }
+            if (Input.GetKeyDown(KeyCode.I) == true && gear == 0 && engineRot < 3000)
+            {
+                gear++;
+                StartCoroutine(ChangeGear());
+            }
             if (Input.GetKeyDown(KeyCode.K) == true && gear > 1 && speed < 12000 * (gear - 1))
+            {
+                gear--;
+                StartCoroutine(ChangeGear());
+            }
+            if (Input.GetKeyDown(KeyCode.K) == true && gear == 1 && speed < 12000)
             {
                 gear--;
                 StartCoroutine(ChangeGear());
@@ -79,6 +96,10 @@ public class PlayerTestController : MonoBehaviour
     void Speed()
     {
         speed = engineRot * gear;
+        if (gear == 0)
+        {
+            speed = -engineRot;
+        }
     }
 
     private IEnumerator ChangeGear()
