@@ -13281,6 +13281,7 @@ MonoBehaviour:
   speed: 0
   isGearChange: 0
   engineRotKeisu: 5013
+  countdownscript: {fileID: 1449685236}
 --- !u!143 &2027761388
 CharacterController:
   m_ObjectHideFlags: 0

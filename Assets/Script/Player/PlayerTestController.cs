@@ -10,6 +10,8 @@ public class PlayerTestController : MonoBehaviour
     public float speed;
     public bool isGearChange;
     public float engineRotKeisu; // 5013‚­‚ç‚¢‚ª‚¿‚å‚¤‚Ç‚¢‚¢
+
+    public CountDownScript countdownscript;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,29 +25,36 @@ public class PlayerTestController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        cc.Move(this.gameObject.transform.forward * speed * Time.deltaTime / 200);
-        EngineRot();
-        Gear();
-        Speed();
-        if (Input.GetKey(KeyCode.A) == true)
+        if (countdownscript.isZero == true)
         {
-            transform.Rotate(0f, -1.5f, 0f);
-        }
-        if (Input.GetKey(KeyCode.D) == true)
-        {
-            transform.Rotate(0f, 1.5f, 0f);
+            cc.Move(this.gameObject.transform.forward * speed * Time.deltaTime / 200);
+            EngineRot();
+            Gear();
+            Speed();
+            if (Input.GetKey(KeyCode.A) == true)
+            {
+                transform.Rotate(0f, -1.5f, 0f);
+            }
+            if (Input.GetKey(KeyCode.D) == true)
+            {
+                transform.Rotate(0f, 1.5f, 0f);
+            }
         }
     }
 
     void EngineRot()
     {
-        if (Input.GetKey(KeyCode.E) == true && isGearChange == false)
+        if (Input.GetKey(KeyCode.W) == true && isGearChange == false)
         {
             engineRot += engineRotKeisu * Time.deltaTime;
         }
         else
         {
             engineRot -= engineRotKeisu * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.S) == true && isGearChange == false)
+        {
+            engineRot -= engineRotKeisu * 1.5f * Time.deltaTime;
         }
         engineRot = Mathf.Clamp(engineRot, 1250, 12000);
     }
