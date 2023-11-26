@@ -10,6 +10,7 @@ public class PlayerTestController : MonoBehaviour
     public float speed;
     public bool isGearChange;
     public float engineRotKeisu; // 5013‚­‚ç‚¢‚ª‚¿‚å‚¤‚Ç‚¢‚¢
+    Vector3 moveDirection = Vector3.zero;
 
     public CountDownScript countdownscript;
     // Start is called before the first frame update
@@ -25,6 +26,7 @@ public class PlayerTestController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        moveDirection.y -= 20 * Time.deltaTime;
         if (countdownscript.isZero == true)
         {
             cc.Move(this.gameObject.transform.forward * speed * Time.deltaTime / 200);
@@ -40,6 +42,7 @@ public class PlayerTestController : MonoBehaviour
                 transform.Rotate(0f, 1.5f, 0f);
             }
         }
+        cc.Move(moveDirection * Time.deltaTime);
     }
 
     void EngineRot()
