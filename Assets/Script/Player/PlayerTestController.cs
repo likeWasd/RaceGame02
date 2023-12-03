@@ -11,6 +11,8 @@ public class PlayerTestController : MonoBehaviour
     public bool isGearChange;
     public float engineRotKeisu; // 5013‚­‚ç‚¢‚ª‚¿‚å‚¤‚Ç‚¢‚¢
     Vector3 moveDirection = Vector3.zero;
+    GameObject Gravity_Hantei;
+    public bool isGravity;
 
     public CountDownScript countdownscript;
     // Start is called before the first frame update
@@ -21,12 +23,16 @@ public class PlayerTestController : MonoBehaviour
         gear = 1;
         speed = 0f;
         isGearChange = false;
+        Gravity_Hantei = GameObject.Find("Gravity_Hantei");
     }
 
     // Update is called once per frame
     void Update()
     {
-        moveDirection.y -= 20 * Time.deltaTime;
+        if (isGravity == true)
+        {
+            moveDirection.y -= 5 * Time.deltaTime;
+        }
         if (countdownscript.isZero == true)
         {
             cc.Move(this.gameObject.transform.forward * speed * Time.deltaTime / 200);
@@ -110,5 +116,15 @@ public class PlayerTestController : MonoBehaviour
         isGearChange = true;
         yield return new WaitForSeconds(1);
         isGearChange = false;
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        isGravity = false;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        isGravity = true;
     }
 }
