@@ -139,7 +139,7 @@ public class PlayerTestController : MonoBehaviour
     {
         while (countdownscript.isZero == false)
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return null;
         }
         while (countdownscript.isZero == true)
         {
