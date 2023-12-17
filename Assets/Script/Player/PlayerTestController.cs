@@ -13,17 +13,20 @@ public class PlayerTestController : MonoBehaviour
     Vector3 moveDirection = Vector3.zero;
     GameObject Gravity_Hantei;
     public bool isGravity;
+    public float fuel;
 
     public CountDownScript countdownscript;
     // Start is called before the first frame update
     void Start()
     {
+        fuel = 80f;
         cc = GetComponent<CharacterController>();
         engineRot = 0f;
         gear = 1;
         speed = 0f;
         isGearChange = false;
         Gravity_Hantei = GameObject.Find("Gravity_Hantei");
+        StartCoroutine(Fuel());
     }
 
     // Update is called once per frame
@@ -73,6 +76,10 @@ public class PlayerTestController : MonoBehaviour
             engineRot -= engineRotKeisu * 1.5f * Time.deltaTime;
         }
         engineRot = Mathf.Clamp(engineRot, 1250, 12000);
+        if (fuel == 0f)
+        {
+            engineRot = Mathf.Clamp(engineRot, 1250, 1250);
+        }
     }
 
     void Gear()
@@ -126,5 +133,18 @@ public class PlayerTestController : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         isGravity = true;
+    }
+
+    private IEnumerator Fuel()
+    {
+        while (countdownscript.isZero == false)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+        while (countdownscript.isZero == true)
+        {
+            yield return new WaitForSeconds(1);
+            fuel -= 0.5f;
+        }
     }
 }
