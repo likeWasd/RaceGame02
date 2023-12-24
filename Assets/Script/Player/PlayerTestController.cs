@@ -14,12 +14,18 @@ public class PlayerTestController : MonoBehaviour
     GameObject Gravity_Hantei;
     public bool isGravity;
     public float fuel;
+    public float maxFuel;
+    /// <summary>
+    /// îRóøè¡îÔó 
+    /// </summary>
+    [Tooltip("îRóøè¡îÔó ")] public float fuelConsumptionQuantity;
+
 
     public CountDownScript countdownscript;
     // Start is called before the first frame update
     void Start()
     {
-        fuel = 80f;
+        fuel = maxFuel;
         cc = GetComponent<CharacterController>();
         engineRot = 0f;
         gear = 1;
@@ -76,9 +82,9 @@ public class PlayerTestController : MonoBehaviour
             engineRot -= engineRotKeisu * 1.5f * Time.deltaTime;
         }
         engineRot = Mathf.Clamp(engineRot, 1250, 12000);
-        if (fuel == 0f)
+        if (fuel <= 0f)
         {
-            engineRot = Mathf.Clamp(engineRot, 1250, 1250);
+            engineRot = 1250f;
         }
     }
 
@@ -144,7 +150,10 @@ public class PlayerTestController : MonoBehaviour
         while (countdownscript.isZero == true)
         {
             yield return new WaitForSeconds(1);
-            fuel -= 0.5f;
+            if (fuel > 0f)
+            {
+                fuel -= fuelConsumptionQuantity;
+            }
         }
     }
 }

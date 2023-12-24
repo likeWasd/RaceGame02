@@ -17,7 +17,11 @@ public class FuelScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        fuel2 = playertestcontroller.fuel / 0.8f;
-        Fuel_Text.text = fuel2.ToString();
+        if (playertestcontroller.fuel <= 0f)
+        {
+            playertestcontroller.fuel = 0f;
+        }
+        fuel2 = playertestcontroller.fuel / playertestcontroller.maxFuel * 100;
+        Fuel_Text.text = fuel2.ToString("F0");
     }
 }
