@@ -134,6 +134,10 @@ public class PlayerTestController : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         isGravity = false;
+        if (other.gameObject.tag == "Refueling" && fuel < maxFuel)
+        {
+            fuel += 0.04f;
+        }
     }
 
     private void OnTriggerExit(Collider other)
